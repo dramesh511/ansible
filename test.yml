@@ -1,1 +1,7 @@
-
+---
+ - name: test file
+   hosts: all
+   tasks:
+     - name: command check
+       shell: uptime
+       register: uptime_data
