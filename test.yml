@@ -8,5 +8,7 @@
      - name: copy file
        ansible.builtin.copy:
          src: /tmp/ram.txt
-         dest: /tmp/ram.txt
+         dest: /tmp/ramnew.txt
+         remote_src: yes
+       deligate_to: localhost
      
