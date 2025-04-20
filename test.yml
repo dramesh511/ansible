@@ -9,6 +9,5 @@
        ansible.builtin.copy:
          src: /tmp/ram.txt
          dest: /tmp/ramnew.txt
-         remote_src: yes
        delegate_to: localhost
      
