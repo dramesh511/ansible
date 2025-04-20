@@ -10,5 +10,5 @@
          src: /tmp/ram.txt
          dest: /tmp/ramnew.txt
          remote_src: yes
-       deligate_to: localhost
+       delegate_to: localhost
      
