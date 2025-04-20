@@ -8,5 +8,8 @@
      - name: copy file
        ansible.builtin.copy:
          src: /tmp/ram.txt
+         owner: ubuntu
+         group: ubuntu
+         mode: '0644'
          dest: /tmp/ramnew.txt
 
