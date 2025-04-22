@@ -1,6 +1,7 @@
 ---
 - name: Install and start Apache server
   hosts: all
+  become: yes
   tasks:
     - name: Install Apache
       ansible.builtin.package:
