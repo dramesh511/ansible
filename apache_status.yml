@@ -1,6 +1,6 @@
 ---
 - name: Check Apache Status and Create HTML Page
-  hosts: webservers
+  hosts: all
   become: true
   gather_facts: true
 
