@@ -4,11 +4,20 @@
   tasks:
     - name: Install Apache
       ansible.builtin.package:
-        name: httpd
+        name: apache2
         state: present
 
     - name: Start and enable Apache service
       ansible.builtin.service:
-        name: httpd
+        name: apache2
+        state: stopped
+        enabled: true
+
+    - name: Start and enable Apache service
+      ansible.builtin.service:
+        name: apache2
         state: started
         enabled: true
+
+    - name: check status
+      shell: systemctl status apache2
