@@ -1,0 +1,21 @@
+---
+- name: Check Apache Status and Create HTML Page
+  hosts: webservers
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Check Apache service status
+      ansible.builtin.service_facts:
+
+    - name: Set Apache status fact
+      ansible.builtin.set_fact:
+        apache_status: "{{ 'running' if services['httpd'].state == 'running' else 'stopped' }}"
+
+    - name: Generate HTML page using Jinja2 template
+      ansible.builtin.template:
+        src: templates/status.html.j2
+        dest: /tmp/status.html
+        owner: root
+        group: root
+        mode: '0644'
