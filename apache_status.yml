@@ -8,9 +8,16 @@
     - name: Check Apache service status
       ansible.builtin.service_facts:
 
-    - name: Set Apache status fact
-      ansible.builtin.set_fact:
-        apache_status: "{{ 'running' if services['httpd'].state == 'running' else 'stopped' }}"
+   - name: Set Apache status fact
+     ansible.builtin.set_fact:
+       apache_status: >-
+         {% if 'httpd' in services %}
+          {{ 'running' if services['httpd'].state == 'running' else 'stopped' }}
+         {% elif 'apache2' in services %}
+          {{ 'running' if services['apache2'].state == 'running' else 'stopped' }}
+         {% else %}
+           not installed
+         {% endif %}
 
     - name: Generate HTML page using Jinja2 template
       ansible.builtin.template:
