@@ -24,7 +24,7 @@
 
     - name: Display HTML content
       debug:
-        msg: "{{ html_file_content['content'] }}"
+        msg: "{{ html_file_content['content'] | b64decode }}"
 
 
 
