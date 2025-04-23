@@ -1,0 +1,17 @@
+---
+- name: Gather Hostname and Uptime and Generate HTML
+  hosts: all
+  gather_facts: yes
+  
+  tasks:
+    - name: Get uptime
+      command: uptime -p
+      register: uptime_output
+
+    - name: Create HTML report
+      template:
+        src: templates/report.html.j2
+        dest: /tmp/{{ inventory_hostname }}_report.html
+      vars:
+        hostname: "{{ ansible_hostname }}"
+        uptime: "{{ uptime_output.stdout }}"
