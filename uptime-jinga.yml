@@ -17,14 +17,14 @@
         hostname: "{{ ansible_hostname }}"
         uptime: "{{ uptime_output.stdout }}"
 
-    - name: Read the generated HTML file
-      slurp:
-        src: /tmp/{{ inventory_hostname }}_report.html
-      register: html_file_content
+    # - name: Read the generated HTML file
+    #   slurp:
+    #     src: /tmp/{{ inventory_hostname }}_report.html
+    #   register: html_file_content
 
-    - name: Display HTML content
-      debug:
-        msg: "{{ html_file_content['content'] | b64decode }}"
+    # - name: Display HTML content
+    #   debug:
+    #     msg: "{{ html_file_content['content'] | b64decode }}"
 
 
 
